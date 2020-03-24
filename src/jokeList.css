@@ -1,0 +1,68 @@
+.jokeList {
+	display: flex;
+	width: 80%;
+	height: 80%;
+}
+.jokeList-sideBar {
+	background: #9575cd;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 30%;
+	text-align: center;
+	box-shadow: 10px 9px 7px -1px rgba(105, 22, 105, 1);
+	z-index: 2;
+}
+.jokeList-title {
+	font-size: 7rem;
+	margin: 2rem;
+	color: white;
+	font-weight: 300;
+	letter-spacing: .6rem;
+	font-weight: 700;
+}
+.jokeList-sideBar img {
+	width: 50%;
+	border-radius: 50%;
+}
+.jokeList-jokes {
+	height: 90%;
+	align-self: center;
+	background: white;
+	width: 70%;
+	overflow: scroll;
+	box-shadow: 10px 9px 7px -1px rgba(105, 22, 105, 1);
+}
+.jokeList-spinner {
+	color: white;
+	text-align: center;
+}
+.jokeList-btn {
+	font-size: 1.5rem;
+	width: 50%;
+	border-radius: 2rem;
+	padding: 1rem 2rem;
+	color: white;
+	font-weight: 700;
+	margin: 2rem;
+	border: none;
+	outline: none;
+	word-spacing: 0.9rem;
+	cursor: pointer;
+	transition: 0.8s ease;
+	background: linear-gradient(
+		-45deg,
+		rgba(203, 96, 179, 1) 0%,
+		rgba(193, 70, 161, 1) 50%,
+		rgba(168, 0, 119, 1) 50%,
+		rgba(206, 40, 152, 1) 87%,
+		rgba(219, 54, 164, 1) 100%
+	);
+	box-shadow: 10px 9px 7px -1px rgba(105, 22, 105, 1);
+}
+
+.jokelist-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 10px 9px 7px -1px rgba(105, 22, 105, 1);
+}

@@ -11,11 +11,11 @@ class JokeList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			jokes: JSON.parse(window.localStorage.getItem('jokes')) || '[]',
+			jokes: JSON.parse(window.localStorage.getItem('jokes') || '[]'),
 			loading: false
 		};
-		// this.seenJoke = new Set(this.state.jokes.map((j) => j.text));
-		// console.log(this.seenJoke);
+		this.seenJoke = new Set(this.state.jokes.map((j) => j.text));
+		console.log(this.seenJoke);
 		this.handleClick = this.handleClick.bind(this);
 	}
 	componentDidMount() {
@@ -28,13 +28,13 @@ class JokeList extends Component {
 				let jokesUrl = 'https://icanhazdadjoke.com/';
 				let jokesRes = await axios.get(jokesUrl, { headers: { Accept: 'application/json' } });
 				let newJoke = jokesRes.data.joke;
-				// if (!this.seenJoke.has(newJoke)) {
-				// 	jokes.push({ id: uuid(), text: newJoke, votes: 0 });
-				// } else {
-				// 	console.log('found a duplicate!');
-				// 	console.log(newJoke);
-				// }
-				jokes.push({ id: uuid(), text: newJoke, votes: 0 });
+				if (!this.seenJoke.has(newJoke)) {
+					jokes.push({ id: uuid(), text: newJoke, votes: 0 });
+				} else {
+					console.log('found a duplicate!');
+					console.log(newJoke);
+				}
+				// jokes.push({ id: uuid(), text: newJoke, votes: 0 });
 			}
 			this.setState(
 				(st) => ({
@@ -70,6 +70,7 @@ class JokeList extends Component {
 				</div>
 			);
 		}
+		let jokes = this.state.jokes;
 		return (
 			<div className="jokeList">
 				<div className="jokeList-sideBar">
@@ -83,7 +84,7 @@ class JokeList extends Component {
 					</button>
 				</div>
 				<div className="jokeList-jokes">
-					{this.state.jokes.map((j) => (
+					{jokes.map((j) => (
 						<Joke
 							key={j.id}
 							votes={j.votes}
